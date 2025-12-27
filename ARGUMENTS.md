@@ -25,8 +25,13 @@ python3 {script}.py -i INPUT -o OUTPUT [OPTIONS]
 - `--pad` - Padding around frames in pixels
 
 ### Quality/Compression Options
-- `--max-size` - Maximum file size in MB
+
+- `--max-size` - Maximum output file size in MB
 - `--alpha-threshold` - Alpha transparency threshold (0-255)
+
+### Input Validation Options
+
+- `--min-resolution` - Minimum acceptable input resolution in pixels (rejects input files smaller than this size)
 
 ### Pipeline Control
 - `--skip-outline` - Skip outline generation step
@@ -58,15 +63,12 @@ Options:
 
 ### apng_to_gif.py
 ```bash
-python3 apng_to_gif.py -i INPUT -o OUTPUT MAX_SIZE [OPTIONS]
-
-Positional (legacy):
-  MAX_SIZE                 Maximum size in MB
+python3 apng_to_gif.py -i INPUT -o OUTPUT [OPTIONS]
 
 Options:
-  --max-size SIZE          Maximum size in MB (alternative to positional)
-  --alpha-threshold N      Alpha threshold 0-255 (default: 10)
-  --min-resolution N       Minimum resolution required (default: 1000)
+  --max-size SIZE          Maximum output file size in MB (default: 10.0)
+  --alpha-threshold N      Alpha threshold 0-255 for transparency (default: 10)
+  --min-resolution N       Minimum input resolution enforced (rejects files smaller than this, default: 1000)
 ```
 
 ### emote_pipeline.py (Main Automation)

@@ -14,6 +14,7 @@ import subprocess
 import sys
 from pathlib import Path
 from typing import Optional
+from datetime import datetime
 
 
 def run_command(cmd: list[str], description: str) -> None:
@@ -110,9 +111,10 @@ Examples:
     else:
         temp_dir = args.output.parent
 
-    # Define intermediate file paths
-    outlined_path = temp_dir / f"{args.input.stem}_outlined.png"
-    resized_path = temp_dir / f"{args.input.stem}_resized.png"
+    # Define intermediate file paths with timestamp to prevent collisions
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    outlined_path = temp_dir / f"{args.input.stem}_outlined_{timestamp}.png"
+    resized_path = temp_dir / f"{args.input.stem}_resized_{timestamp}.png"
 
     print("\n" + "="*60)
     print("EMOTE PIPELINE")
