@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.temp*.gif
+*.temp*.png
+*_outlined.png
+*_resized.png
+*.pbm
+*.svg
+
+# Output files (keep examples but not test outputs)
+output_*.gif
+output_*.png
+test*.gif
+test*.png
+
+# macOS
+.DS_Store
+
+# Keep the example input
+!tail.png

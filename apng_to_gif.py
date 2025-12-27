@@ -140,9 +140,16 @@ def compress_to_target_size(animation: Animation, output_path: Path, target_size
 
 def main():
     parser = argparse.ArgumentParser(description="Convert animated PNG to web-ready GIF with size constraint")
-    parser.add_argument("input_file", type=Path, help="Input animated PNG file path")
-    parser.add_argument("max_size_mb", type=float, help="Maximum output size in MB")
-    parser.add_argument("-o", "--output", type=Path, help="Output GIF file path (defaults to input name with .gif extension)")
+
+    # Required arguments
+    parser.add_argument("-i", "--input", required=True, type=Path, dest="input_file",
+                       help="Input animated PNG file path")
+    parser.add_argument("-o", "--output", type=Path,
+                       help="Output GIF file path (defaults to input name with .gif extension)")
+
+    # Optional arguments
+    parser.add_argument("--max-size", type=float, default=10.0,
+                       help="Maximum output size in MB (default: 10.0)")
 
     args = parser.parse_args()
 
@@ -153,7 +160,7 @@ def main():
 
     animation = load_animation(args.input_file)
 
-    target_size_bytes = int(args.max_size_mb * 1024 * 1024)
+    target_size_bytes = int(args.max_size * 1024 * 1024)
 
     result_path = compress_to_target_size(animation, output_path, target_size_bytes)
 

@@ -165,9 +165,9 @@ Examples:
         cmd = [
             sys.executable,
             str(script_dir / "apng_to_gif.py"),
-            str(current_file),
-            str(args.max_size),
+            "-i", str(current_file),
             "-o", str(args.output),
+            "--max-size", str(args.max_size),
         ]
         run_command(cmd, "Optimize and convert to GIF")
     else:
